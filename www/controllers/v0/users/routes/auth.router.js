@@ -23,6 +23,7 @@ const EmailValidator = __importStar(require("email-validator"));
 const router = express_1.Router();
 function generatePassword(plainTextPassword) {
     return __awaiter(this, void 0, void 0, function* () {
+        //@TODO Use Bcrypt to Generate Salted Hashed Passwords
         const saltRounds = 10;
         let salt = yield bcrypt.genSalt(saltRounds);
         return yield bcrypt.hash(plainTextPassword, salt);
@@ -30,6 +31,7 @@ function generatePassword(plainTextPassword) {
 }
 function comparePasswords(plainTextPassword, hash) {
     return __awaiter(this, void 0, void 0, function* () {
+        //@TODO Use Bcrypt to Compare your password to your Salted, Hashed Password
         return yield bcrypt.compare(plainTextPassword, hash);
     });
 }
